@@ -220,6 +220,7 @@ static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
+static void try_quit(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
 static void unmanage(Client *c, int destroyed);
 static void unmapnotify(XEvent *e);
@@ -1916,6 +1917,22 @@ toggleview(const Arg *arg)
 		focus(NULL);
 		arrange(selmon);
 	}
+}
+
+void
+try_quit(const Arg *arg)
+{
+	unsigned int n;
+	Window w1, w2, *children = NULL;
+	XQueryTree(dpy, root, &w1, &w2, &children, &n);
+
+	if (children != NULL)
+		XFree(children);
+
+	if (n == EMPTY_WINDOW_COUNT)
+		running = 0;
+	else
+		printf("[dwm] try_quit condition failed (n=%d)\n", n);
 }
 
 void

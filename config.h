@@ -69,9 +69,6 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	// { MODKEY,                       XK_F11,    spawn, 	   {.v = downvol } },
-	// { MODKEY,                       XK_F9,     spawn, 	   {.v = mutevol } },
-	// { MODKEY,                       XK_F12,    spawn, 	   {.v = upvol   } },
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },	
@@ -110,7 +107,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      try_quit,       {0} },
+	{ MODKEY|ShiftMask|ControlMask, XK_q,      quit,           {0} },
 };
 
 /* button definitions */
@@ -133,3 +131,8 @@ static Button buttons[] = {
 };
 
 
+/* how many windows should be open when quitting? */
+/* on a stock dwm install, this seems to be two; however, you'll have to
+ * change it depending on how many invisible X windows exist */
+/* you can get a list with `xwininfo -tree -root`. */
+static const int EMPTY_WINDOW_COUNT = 3;
