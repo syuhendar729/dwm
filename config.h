@@ -5,6 +5,8 @@
 static const char *upvol[]   = { "volup", NULL};
 static const char *downvol[] = { "voldown", NULL};
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *brightup[] = { "brightup", NULL};
+static const char *brightdown[] = { "brightdown", NULL};
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -69,9 +71,11 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },	
+	{ 0,                    	XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+	{ 0,                    	XF86XK_AudioMute, spawn, {.v = mutevol } },
+	{ 0,                    	XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },	
+	{ 0,	                	XF86XK_MonBrightnessUp, spawn, {.v = brightup   } },		
+	{ 0, 				XF86XK_MonBrightnessDown, spawn,  {.v = brightdown   } },	
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
