@@ -8,25 +8,30 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "togg
 static const char *brightup[] = { "brightup", NULL};
 static const char *brightdown[] = { "brightdown", NULL};
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 7;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12", "FontAwesome:size=16" };
-static const char dmenufont[]       = "monospace:size=12";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
-
+// static const char *fonts[]          = { "monospace:size=10", "FontAwesome:size=12", "Hack:size=12" };
+static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 5;        /* vertical padding for statusbar */ 
+static const char *fonts[]          = { "NotoSansMono Nerd Font:size=10" };
+static const char dmenufont[]       = "Hack:size=12";
+// static const char col_gray1[]       = "#222222";
+// static const char col_gray2[]       = "#444444";
+// static const char col_gray3[]       = "#bbbbbb";
+// static const char col_gray4[]       = "#eeeeee";
+// static const char col_cyan[]        = "#005577";
+// static const char *colors[][3]      = {
+//     [>               fg         bg         border   <]
+//     [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+//     [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+// };
+//
+#include "themes/dark/my-gruvbox.h"
 /* tagging */
-static const char *tags[] = { "", "", "", "", "5", "6", "7", "", "" };
+static const char *tags[] = { "", "", "", "", "5", "6", "7", "", "" };
+//static const char *tags[] = { "S", "Y", "U", "H", "E", "N", "D", "A", "R" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,6 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
@@ -114,6 +120,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,      try_quit,       {0} },
 	{ MODKEY|ShiftMask|ControlMask, XK_e,      quit,           {0} },
 	{ MODKEY,						XK_q,      quit,           {1} }, 
+	
+	{ MODKEY,             			XK_Return, spawn,         SHCMD("tabbed -r 2 st -w ''")  },
+	{ MODKEY,						XK_r,		spawn,		  SHCMD("rofi -show drun -show-icons") },
 };
 
 /* button definitions */

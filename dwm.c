@@ -753,7 +753,9 @@ drawbar(Monitor *m)
 			}
 		}
 		tw = TEXTW(text) - lrpad + 2;
-		drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+		/** tw = TEXTW(text); */
+		/** drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0); */
+		drw_text(drw, m->ww - tw, 0, tw, bh, lrpad / 2, stext, 0);
 		tw = statusw;
 	}
 
@@ -1709,8 +1711,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = drw->fonts->h + vertpadbar;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
