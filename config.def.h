@@ -21,8 +21,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 5;        /* vertical padding for statusbar */ 
 static const char *fonts[]          = {"NotoSansMono Nerd Font:size=10"};
-// static const char *fonts[]          = {"Hack:size=12"};
-static const char dmenufont[]       = "Hack:size=12";
+static const char dmenufont[]       = "NotoSansMono Nerd Font:size=10";
 #include "themes/dark/my-gruvbox.h"
 /* tagging */
 static const char *tags[] = { "", "", "", "", "5", "6", "7", "", "" };
@@ -66,6 +65,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = {"dmenu_run"};
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
@@ -117,6 +117,9 @@ static Key keys[] = {
 	{ MODKEY,             			XK_Return, spawn,         SHCMD("tabbed -r 2 st -w ''")  },
 	{ MODKEY|ShiftMask,				XK_r,		spawn,		  SHCMD("rofi -show run") },
 	{ MODKEY,						XK_r,		spawn,		  SHCMD("rofi -show drun -show-icons") },
+	{ MODKEY,						XK_s,		spawn,		  SHCMD("i3-scrot") },
+	{ MODKEY|ShiftMask,				XK_s,		spawn,		  SHCMD("flameshot-imgck") },
+	{ MODKEY|ShiftMask,				XK_p,		spawn,		  SHCMD("dmenu_run") },
 };
 
 /* button definitions */
