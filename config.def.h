@@ -25,6 +25,7 @@ static const char dmenufont[]       = "NotoSansMono Nerd Font:size=10";
 #include "themes/dark/my-gruvbox.h"
 /* tagging */
 static const char *tags[] = { "", "", "", "", "5", "6", "7", "", "" };
+static const char *defaulttagapps[] = { "st", "mpv", "chromium", "pcmanfm", NULL, NULL, NULL, "telegram-desktop", NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -77,6 +78,7 @@ static Key keys[] = {
 	{ 0, 				XF86XK_MonBrightnessDown, spawn,  {.v = brightdown   } },	
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawndefault,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
