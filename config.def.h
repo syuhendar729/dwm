@@ -24,8 +24,8 @@ static const char *fonts[]          = {"NotoSansMono Nerd Font:size=10"};
 static const char dmenufont[]       = "NotoSansMono Nerd Font:size=10";
 #include "themes/dark/my-gruvbox.h"
 /* tagging */
-static const char *tags[] = { "", "", "", "", "5", "6", "7", "", "" };
-static const char *defaulttagapps[] = { "st", "mpv", "chromium", "pcmanfm", NULL, NULL, NULL, "telegram-desktop", NULL };
+static const char *tags[] = { "", "", "", "", "5", "", "", "", "" };
+static const char *defaulttagapps[] = { "st", NULL, "chromium", "pcmanfm", NULL, NULL, NULL, "telegram-desktop", NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -33,8 +33,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",     	 NULL,      NULL,	         0,            	1,           -1 },
+	{ "firefox",  	 NULL,      NULL,       1 << 4,       		0,           -1 },
+	{ "Chromium",  	 NULL, 	  	NULL, 	    1 << 2, 			0, 			 -1	},
+	{ "Pcmanfm",  	 NULL, 	  	NULL, 	    1 << 3, 			1, 			  0	},
+	{ "zoom",  		 NULL, 	  	NULL, 	  	1 << 8, 			0, 			 -1	},
+	{ "mpv",  		 NULL, 	  	NULL, 	  	1 << 1, 			0, 			 -1	},
+	{ "TelegramDesktop",  		 NULL, 	  	NULL, 	  	1 << 7, 			0, 			 -1	},
 };
 
 /* layout(s) */
