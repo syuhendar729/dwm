@@ -25,7 +25,7 @@ static const char dmenufont[]       = "NotoSansMono Nerd Font:size=10";
 #include "themes/dark/my-gruvbox.h"
 /* tagging */
 static const char *tags[] = { "", "", "", "", "5", "", "", "", "" };
-static const char *defaulttagapps[] = { "st", NULL, "chromium", "pcmanfm", NULL, NULL, NULL, "telegram-desktop", NULL };
+static const char *defaulttagapps[] = { "st", NULL, "chromium", "pcmanfm", NULL, "subl", "firefox", "telegram-desktop", NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -34,12 +34,15 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     	 NULL,      NULL,	         0,            	1,           -1 },
-	{ "firefox",  	 NULL,      NULL,       1 << 4,       		0,           -1 },
+	{ "firefox",  	 NULL,      NULL,       1 << 6,       		0,           -1 },
 	{ "Chromium",  	 NULL, 	  	NULL, 	    1 << 2, 			0, 			 -1	},
-	{ "Pcmanfm",  	 NULL, 	  	NULL, 	    1 << 3, 			1, 			  0	},
+	{ "Pcmanfm",  	 NULL, 	  	NULL, 	    1 << 3, 			1, 			 -1	},
 	{ "zoom",  		 NULL, 	  	NULL, 	  	1 << 8, 			0, 			 -1	},
 	{ "mpv",  		 NULL, 	  	NULL, 	  	1 << 1, 			0, 			 -1	},
+	{ "Sublime_text",  		     NULL, 	  	NULL, 	  	1 << 5, 			0, 			 -1},
 	{ "TelegramDesktop",  		 NULL, 	  	NULL, 	  	1 << 7, 			0, 			 -1	},
+	{ "Brave-browser",  		 NULL, 	  	NULL, 	  	1 << 2, 			0, 			 -1},
+	{ "Brave-browser-nightly", 	 NULL, 	  	NULL, 	  	1 << 2, 			0, 			 -1},
 };
 
 /* layout(s) */
@@ -80,7 +83,7 @@ static Key keys[] = {
 	{ 0,                    	XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                    	XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },	
 	{ 0,	                	XF86XK_MonBrightnessUp, spawn, {.v = brightup   } },		
-	{ 0, 				XF86XK_MonBrightnessDown, spawn,  {.v = brightdown   } },	
+	{ 0, 						XF86XK_MonBrightnessDown, spawn,  {.v = brightdown   } },	
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawndefault,   {0} },
