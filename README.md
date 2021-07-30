@@ -1,4 +1,7 @@
 ![Screenshot](img/my-dwm.png)
+![Screenshot](img/my-dwm1.png)
+![Screenshot](img/my-dwm2.png)
+![Screenshot](img/my-dwm3.png)
 
 dwm - dynamic window manager
 ============================
