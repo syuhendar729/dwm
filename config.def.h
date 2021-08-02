@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	{ "Gimp",     	 NULL,      NULL,	         0,            	1,           -1 },
 	{ "firefox",  	 NULL,      NULL,       1 << 6,       		0,           -1 },
 	{ "Chromium",  	 NULL, 	  	NULL, 	    1 << 2, 			0, 			 -1	},
-	{ "Pcmanfm",  	 NULL, 	  	NULL, 	    1 << 3, 			1, 			 -1	},
+	{ "Pcmanfm",  	 NULL, 	  	NULL, 	    1 << 3, 			0, 			 -1	},
 	{ "zoom",  		 NULL, 	  	NULL, 	  	1 << 8, 			0, 			 -1	},
 	{ "mpv",  		 NULL, 	  	NULL, 	  	1 << 1, 			0, 			 -1	},
 	{ "Sublime_text",  		     NULL, 	  	NULL, 	  	1 << 5, 			0, 			 -1},
@@ -124,12 +124,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask|ControlMask, XK_e,      quit,           {0} },
 	{ MODKEY,						XK_q,      quit,           {1} }, 
 	
-	{ MODKEY,             			XK_Return, spawn,         SHCMD("tabbed -r 2 st -w ''")  },
-	{ MODKEY|ShiftMask,				XK_r,		spawn,		  SHCMD("rofi -show run") },
-	{ MODKEY,						XK_r,		spawn,		  SHCMD("rofi -show drun -show-icons") },
-	{ MODKEY,						XK_s,		spawn,		  SHCMD("i3-scrot") },
-	{ MODKEY|ShiftMask,				XK_s,		spawn,		  SHCMD("flameshot-imgck") },
-	{ MODKEY|ShiftMask,				XK_p,		spawn,		  SHCMD("dmenu_run") },
+	/* 	=========================== My Keyboard Shortcut =========================================== */
+
+	{ MODKEY,             			XK_Return, 		spawn,         SHCMD("tabbed -r 2 st -w ''")  },
+	{ MODKEY|ShiftMask,				XK_r,			spawn,		  SHCMD("rofi -show run") },
+	{ MODKEY,						XK_r,			spawn,		  SHCMD("rofi -show drun -show-icons") },
+	{ MODKEY,						XK_s,			spawn,		  SHCMD("scrot-me") },
+	{ MODKEY|ShiftMask,				XK_s,			spawn,		  SHCMD("scrot-gui") },
+	{ MODKEY|ShiftMask,				XK_Print,		spawn,		  SHCMD("scrot-delay") },
+	{ MODKEY,						XK_Print,		spawn,		  SHCMD("flameshot-imgck") },
+	{ MODKEY|ShiftMask,				XK_p,		spawn,		  SHCMD("playerctl play-pause") },
 };
 
 /* button definitions */
