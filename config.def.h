@@ -23,6 +23,15 @@ static const int vertpadbar         = 5;        /* vertical padding for statusba
 static const char *fonts[]          = {"NotoSansMono Nerd Font:size=10"};
 static const char dmenufont[]       = "NotoSansMono Nerd Font:size=10";
 #include "themes/dark/my-gruvbox.h"
+
+static const char *const autostart[] = {
+	"nm-applet", NULL,
+	"picom", "-f", NULL,
+	"nitrogen", "--restore", NULL,
+	"sh", "-c", "while :; do sb-all; sleep 1; done", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "", "", "", "", "5", "", "", "", "" };
 static const char *defaulttagapps[] = { "st", NULL, "chromium", "pcmanfm", NULL, "subl", "firefox", "telegram-desktop", NULL };
