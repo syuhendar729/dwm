@@ -871,8 +871,10 @@ drawbar(Monitor *m)
 
 		x += w;
 	}
-	w = blw = TEXTW(m->ltsymbol);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	/** w = blw = TEXTW(m->ltsymbol); */
+	/** drw_setscheme(drw, scheme[SchemeNorm]); */
+	tw = TEXTW(stext) - lrpad / 2 + 2; /* 2px extra right padding */
+	drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - tw - stw - x) > bh) {
